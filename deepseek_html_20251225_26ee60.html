@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Classroom | Shivam Soni</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;500;600&family=Orbitron:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <!-- Particle Background -->
+    <div class="particle-background" id="particles"></div>
+    
+    <!-- Animated Circuit Background -->
+    <div class="circuit-bg">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="circuit" width="80" height="80" patternUnits="userSpaceOnUse">
+                    <path d="M0,40 Q20,20 40,40 T80,40" stroke="rgba(0, 183, 255, 0.1)" fill="none" stroke-width="1"/>
+                    <circle cx="40" cy="40" r="3" fill="rgba(0, 183, 255, 0.2)"/>
+                    <circle cx="0" cy="40" r="2" fill="rgba(0, 183, 255, 0.3)"/>
+                    <circle cx="80" cy="40" r="2" fill="rgba(0, 183, 255, 0.3)"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#circuit)"/>
+        </svg>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="loginScreen" class="screen active">
+        <div class="login-container">
+            <div class="physics-header animate__animated animate__fadeInDown">
+                <div class="atom-loader">
+                    <div class="nucleus"></div>
+                    <div class="orbit orbit-1">
+                        <div class="electron"></div>
+                    </div>
+                    <div class="orbit orbit-2">
+                        <div class="electron"></div>
+                    </div>
+                    <div class="orbit orbit-3">
+                        <div class="electron"></div>
+                    </div>
+                </div>
+                
+                <h1 class="title-neon">
+                    <span class="neon-text">Physics</span>
+                    <span class="sub-neon">Classroom</span>
+                </h1>
+                
+                <p class="teacher-tagline">
+                    <i class="fas fa-bolt"></i>
+                    Welcome to <strong>Shivam Soni's</strong> Digital Physics Lab
+                    <i class="fas fa-atom"></i>
+                </p>
+                
+                <div class="subject-tags">
+                    <span class="subject-tag"><i class="fas fa-rocket"></i> Mechanics</span>
+                    <span class="subject-tag"><i class="fas fa-magnet"></i> Electromagnetism</span>
+                    <span class="subject-tag"><i class="fas fa-lightbulb"></i> Optics</span>
+                    <span class="subject-tag"><i class="fas fa-temperature-high"></i> Thermodynamics</span>
+                </div>
+            </div>
+            
+            <div class="login-form slide-up">
+                <h2 class="form-title">
+                    <i class="fas fa-user-astronaut"></i>
+                    Student Portal Access
+                </h2>
+                
+                <div class="input-group physics-input">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                    <div class="input-focus-line"></div>
+                </div>
+                
+                <div class="input-group physics-input">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    <div class="input-focus-line"></div>
+                </div>
+                
+                <button id="loginBtn" class="btn-physics pulse">
+                    <i class="fas fa-space-shuttle"></i>
+                    <span>Launch Classroom</span>
+                    <div class="btn-sparkle"></div>
+                </button>
+                
+                <div class="form-footer">
+                    <p class="register-text">
+                        New to Physics Class? 
+                        <a href="#" id="showRegister" class="neon-link">
+                            <i class="fas fa-user-plus"></i> Create Account
+                        </a>
+                    </p>
+                    
+                    <div class="teacher-access">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <p>Teacher Access: <strong>physicsbyshivamsoni@gmail.com</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="login-form register-form" style="display: none;">
+                <h2 class="form-title">
+                    <i class="fas fa-user-graduate"></i>
+                    Join Physics Classroom
+                </h2>
+                
+                <div class="input-group physics-input">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="registerName" placeholder="Full Name" required>
+                    <div class="input-focus-line"></div>
+                </div>
+                
+                <div class="input-group physics-input">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="registerEmail" placeholder="Email Address" required>
+                    <div class="input-focus-line"></div>
+                </div>
+                
+                <div class="input-group physics-input">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="registerPassword" placeholder="Create Password (min. 6 characters)" required>
+                    <div class="input-focus-line"></div>
+                </div>
+                
+                <div class="physics-branch">
+                    <label><i class="fas fa-stream"></i> Select Your Physics Branch:</label>
+                    <select id="physicsBranch">
+                        <option value="classical">Classical Mechanics</option>
+                        <option value="modern">Modern Physics</option>
+                        <option value="electro">Electromagnetism</option>
+                        <option value="quantum">Quantum Physics</option>
+                        <option value="thermo">Thermodynamics</option>
+                    </select>
+                </div>
+                
+                <button id="registerBtn" class="btn-physics">
+                    <i class="fas fa-user-astronaut"></i>
+                    <span>Register & Explore Physics</span>
+                </button>
+                
+                <p class="form-switch">
+                    Already have account? 
+                    <a href="#" id="showLogin" class="neon-link">
+                        <i class="fas fa-sign-in-alt"></i> Login here
+                    </a>
+                </p>
+            </div>
+            
+            <div class="physics-quote">
+                <i class="fas fa-quote-left"></i>
+                <p>"Physics is the poetry of the universe."</p>
+                <span class="quote-author">- Shivam Soni</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="screen">
+        <!-- Floating Physics Elements -->
+        <div class="floating-elements">
+            <div class="float-element" style="top:10%; left:5%;">
+                <i class="fas fa-atom"></i>
+            </div>
+            <div class="float-element" style="top:15%; right:10%;">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <div class="float-element" style="bottom:20%; left:15%;">
+                <i class="fas fa-magnet"></i>
+            </div>
+            <div class="float-element" style="bottom:15%; right:8%;">
+                <i class="fas fa-satellite"></i>
+            </div>
+        </div>
+
+        <!-- Dashboard Header -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <div class="logo-small">
+                    <div class="logo-atom">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h2>Physics Classroom</h2>
+                        <p>by Shivam Soni</p>
+                    </div>
+                </div>
+                
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="user-details">
+                        <span id="userGreeting" class="user-name">Welcome, Explorer!</span>
+                        <div class="user-badge" id="userRoleBadge">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>Student</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-center">
+                <div class="classroom-title">
+                    <h1 class="teacher-name">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        Shivam Soni's Physics Lab
+                    </h1>
+                    <div class="live-indicator">
+                        <div class="pulse-dot"></div>
+                        <span>Live Classroom</span>
+                    </div>
+                </div>
+                
+                <div class="physics-topics">
+                    <span><i class="fas fa-weight-hanging"></i> Mechanics</span>
+                    <span><i class="fas fa-bolt"></i> Electricity</span>
+                    <span><i class="fas fa-wave-square"></i> Waves</span>
+                    <span><i class="fas fa-star"></i> Astrophysics</span>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="classroom-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <span class="stat-number" id="onlineCount">0</span>
+                            <span class="stat-label">Online</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-comments"></i>
+                        <div>
+                            <span class="stat-number" id="messageCount">0</span>
+                            <span class="stat-label">Active</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="logoutBtn" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <div class="nav-container">
+                <button class="nav-btn active" data-tab="community">
+                    <i class="fas fa-comments"></i>
+                    <span>Physics Forum</span>
+                    <div class="nav-indicator"></div>
+                </button>
+                
+                <button class="nav-btn" data-tab="experiments">
+                    <i class="fas fa-flask"></i>
+                    <span>Virtual Lab</span>
+                    <div class="nav-indicator"></div>
+                </button>
+                
+                <button class="nav-btn" data-tab="homework">
+                    <i class="fas fa-book"></i>
+                    <span>Assignments</span>
+                    <div class="nav-indicator"></div>
+                </button>
+                
+                <button class="nav-btn" data-tab="resources">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Resources</span>
+                    <div class="nav-indicator"></div>
+                </button>
+                
+                <button class="nav-btn" data-tab="doubts">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Q&A Hub</span>
+                    <div class="nav-indicator"></div>
+                </button>
+                
+                <button class="nav-btn" data-tab="students">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Physics Club</span>
+                    <div class="nav-indicator"></div>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Physics Forum Tab -->
+            <div id="communityTab" class="tab-content active">
+                <div class="tab-header">
+                    <h2>
+                        <i class="fas fa-comments"></i>
+                        Physics Discussion Forum
+                    </h2>
+                    <p>Discuss theories, problems, and discoveries with peers</p>
+                </div>
+                
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <div class="chat-topic">
+                            <i class="fas fa-hashtag"></i>
+                            <select id="topicSelect">
+                                <option value="general">#general-physics</option>
+                                <option value="mechanics">#classical-mechanics</option>
+                                <option value="quantum">#quantum-physics</option>
+                                <option value="electro">#electromagnetism</option>
+                                <option value="astro">#astrophysics</option>
+                            </select>
+                        </div>
+                        <div class="chat-stats">
+                            <span><i class="fas fa-users"></i> <span id="chatOnline">0</span> in chat</span>
+                        </div>
+                    </div>
+                    
+                    <div class="messages-container" id="communityMessages">
+                        <div class="welcome-message">
+                            <i class="fas fa-atom"></i>
+                            <h3>Welcome to Physics Forum!</h3>
+                            <p>Start discussing physics concepts, problems, and theories</p>
+                        </div>
+                    </div>
+                    
+                    <div class="message-input">
+                        <div class="input-wrapper">
+                            <input type="text" id="communityMessage" placeholder="Share your physics thoughts...">
+                            <button id="sendCommunityMsg" class="btn-send">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Launch</span>
+                            </button>
+                        </div>
+                        <div class="message-actions">
+                            <button class="action-btn" data-action="formula">
+                                <i class="fas fa-square-root-alt"></i> Add Formula
+                            </button>
+                            <button class="action-btn" data-action="diagram">
+                                <i class="fas fa-draw-polygon"></i> Add Diagram
+                            </button>
+                            <button class="action-btn" data-action="question">
+                                <i class="fas fa-question"></i> Ask Question
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Virtual Lab Tab -->
+            <div id="experimentsTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>
+                        <i class="fas fa-flask"></i>
+                        Virtual Physics Lab
+                    </h2>
+                    <p>Interactive simulations and virtual experiments</p>
+                </div>
+                
+                <div class="experiments-container">
+                    <div class="experiments-grid">
+                        <div class="experiment-card" data-experiment="pendulum">
+                            <div class="experiment-icon">
+                                <i class="fas fa-weight-hanging"></i>
+                            </div>
+                            <h3>Simple Pendulum</h3>
+                            <p>Study oscillation and time period</p>
+                            <button class="btn-experiment" onclick="openSimulation('pendulum')">
+                                <i class="fas fa-play"></i> Start Experiment
+                            </button>
+                        </div>
+                        
+                        <div class="experiment-card" data-experiment="circuit">
+                            <div class="experiment-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>Circuit Builder</h3>
+                            <p>Build and analyze circuits</p>
+                            <button class="btn-experiment" onclick="openSimulation('circuit')">
+                                <i class="fas fa-play"></i> Start Experiment
+                            </button>
+                        </div>
+                        
+                        <div class="experiment-card" data-experiment="optics">
+                            <div class="experiment-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3>Optics Lab</h3>
+                            <p>Light reflection and refraction</p>
+                            <button class="btn-experiment" onclick="openSimulation('optics')">
+                                <i class="fas fa-play"></i> Start Experiment
+                            </button>
+                        </div>
+                        
+                        <div class="experiment-card" data-experiment="thermo">
+                            <div class="experiment-icon">
+                                <i class="fas fa-temperature-high"></i>
+                            </div>
+                            <h3>Thermodynamics</h3>
+                            <p>Heat transfer simulations</p>
+                            <button class="btn-experiment" onclick="openSimulation('thermo')">
+                                <i class="fas fa-play"></i> Start Experiment
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="simulation-container" id="simulationArea" style="display: none;">
+                        <div class="simulation-header">
+                            <h3 id="simulationTitle"></h3>
+                            <button class="btn-close" onclick="closeSimulation()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="simulation-frame" id="simulationFrame">
+                            <!-- Simulation will load here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assignments Tab -->
+            <div id="homeworkTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>
+                        <i class="fas fa-book"></i>
+                        Physics Assignments
+                    </h2>
+                    <p>Problems and exercises from Shivam Soni</p>
+                </div>
+                
+                <div class="assignments-container">
+                    <div id="assignmentsList" class="assignments-grid">
+                        <!-- Assignments load here -->
+                    </div>
+                    
+                    <!-- Teacher-only assignment form -->
+                    <div id="teacherAssignmentForm" class="teacher-form" style="display: none;">
+                        <h3><i class="fas fa-plus-circle"></i> Create New Assignment</h3>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label><i class="fas fa-heading"></i> Assignment Title</label>
+                                <input type="text" id="assignmentTitle" placeholder="e.g., Newton's Laws Problems">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label><i class="fas fa-tags"></i> Physics Topic</label>
+                                <select id="assignmentTopic">
+                                    <option value="mechanics">Classical Mechanics</option>
+                                    <option value="electro">Electromagnetism</option>
+                                    <option value="thermo">Thermodynamics</option>
+                                    <option value="optics">Optics</option>
+                                    <option value="modern">Modern Physics</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar"></i> Due Date</label>
+                                <input type="date" id="assignmentDueDate">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label><i class="fas fa-weight-hanging"></i> Weightage</label>
+                                <select id="assignmentWeight">
+                                    <option value="10">10%</option>
+                                    <option value="15">15%</option>
+                                    <option value="20">20%</option>
+                                    <option value="25">25%</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label><i class="fas fa-tasks"></i> Problem Description</label>
+                            <textarea id="assignmentDescription" placeholder="Detailed problem statement and instructions..." rows="6"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label><i class="fas fa-link"></i> Reference Material (Google Drive)</label>
+                            <input type="url" id="assignmentResources" placeholder="Google Drive link to reference materials">
+                        </div>
+                        
+                        <button id="addAssignmentBtn" class="btn-physics">
+                            <i class="fas fa-paper-plane"></i> Publish Assignment
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resources Tab -->
+            <div id="resourcesTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>
+                        <i class="fas fa-folder-open"></i>
+                        Physics Resources Library
+                    </h2>
+                    <p>Study materials, lecture notes, and reference books</p>
+                </div>
+                
+                <div class="resources-container">
+                    <div class="resource-filters">
+                        <button class="filter-btn active" data-filter="all">All Resources</button>
+                        <button class="filter-btn" data-filter="lecture">Lecture Notes</button>
+                        <button class="filter-btn" data-filter="video">Video Lectures</button>
+                        <button class="filter-btn" data-filter="book">E-Books</button>
+                        <button class="filter-btn" data-filter="solved">Solved Papers</button>
+                    </div>
+                    
+                    <div id="resourcesList" class="resources-grid">
+                        <!-- Resources load here -->
+                    </div>
+                    
+                    <!-- Teacher-only resource form -->
+                    <div id="teacherResourceForm" class="teacher-form" style="display: none;">
+                        <h3><i class="fas fa-cloud-upload-alt"></i> Upload New Resource</h3>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label><i class="fas fa-heading"></i> Resource Title</label>
+                                <input type="text" id="resourceTitle" placeholder="e.g., Quantum Mechanics Notes">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label><i class="fas fa-tags"></i> Resource Type</label>
+                                <select id="resourceType">
+                                    <option value="lecture">Lecture Notes</option>
+                                    <option value="video">Video Lecture</option>
+                                    <option value="book">E-Book</option>
+                                    <option value="solved">Solved Paper</option>
+                                    <option value="presentation">Presentation</option>
+                                    <option value="formula">Formula Sheet</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label><i class="fas fa-stream"></i> Physics Branch</label>
+                                <select id="resourceBranch">
+                                    <option value="mechanics">Mechanics</option>
+                                    <option value="electro">Electromagnetism</option>
+                                    <option value="thermo">Thermodynamics</option>
+                                    <option value="optics">Optics</option>
+                                    <option value="quantum">Quantum Physics</option>
+                                    <option value="astro">Astrophysics</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label><i class="fas fa-align-left"></i> Description</label>
+                            <textarea id="resourceDescription" placeholder="Brief description of the resource..." rows="4"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label><i class="fas fa-link"></i> Google Drive Link</label>
+                            <input type="url" id="resourceLink" placeholder="Paste Google Drive shareable link" required>
+                            <small class="help-text">Make sure file is shared as "Anyone with the link can view"</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label><i class="fas fa-graduation-cap"></i> Difficulty Level</label>
+                            <div class="difficulty-levels">
+                                <label class="difficulty-option">
+                                    <input type="radio" name="difficulty" value="beginner" checked>
+                                    <span class="difficulty-dot beginner"></span>
+                                    Beginner
+                                </label>
+                                <label class="difficulty-option">
+                                    <input type="radio" name="difficulty" value="intermediate">
+                                    <span class="difficulty-dot intermediate"></span>
+                                    Intermediate
+                                </label>
+                                <label class="difficulty-option">
+                                    <input type="radio" name="difficulty" value="advanced">
+                                    <span class="difficulty-dot advanced"></span>
+                                    Advanced
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button id="addResourceBtn" class="btn-physics">
+                            <i class="fas fa-upload"></i> Upload Resource
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q&A Hub Tab -->
+            <div id="doubtsTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>
+                        <i class="fas fa-question-circle"></i>
+                        Physics Q&A Hub
+                    </h2>
+                    <p>Ask doubts and get solutions from teacher and peers</p>
+                </div>
+                
+                <div class="doubts-container">
+                    <div class="ask-doubt-section">
+                        <h3><i class="fas fa-question"></i> Ask Physics Question</h3>
+                        
+                        <div class="doubt-input">
+                            <textarea id="doubtQuestion" placeholder="Type your physics doubt here... You can include formulas like F=ma, equations, or diagrams descriptions" rows="4"></textarea>
+                            
+                            <div class="doubt-options">
+                                <select id="doubtTopic">
+                                    <option value="general">General Physics</option>
+                                    <option value="mechanics">Mechanics</option>
+                                    <option value="electro">Electromagnetism</option>
+                                    <option value="thermo">Thermodynamics</option>
+                                    <option value="optics">Optics</option>
+                                    <option value="quantum">Quantum Physics</option>
+                                </select>
+                                
+                                <select id="doubtUrgency">
+                                    <option value="low">Low Priority</option>
+                                    <option value="medium" selected>Medium Priority</option>
+                                    <option value="high">High Priority</option>
+                                </select>
+                            </div>
+                            
+                            <button id="askDoubtBtn" class="btn-physics">
+                                <i class="fas fa-paper-plane"></i> Submit Question
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="doubts-list-container">
+                        <div class="doubts-filters">
+                            <button class="doubt-filter active" data-filter="all">All Questions</button>
+                            <button class="doubt-filter" data-filter="unanswered">Unanswered</button>
+                            <button class="doubt-filter" data-filter="answered">Answered</button>
+                            <button class="doubt-filter" data-filter="my">My Questions</button>
+                        </div>
+                        
+                        <div id="doubtsList" class="doubts-list">
+                            <!-- Doubts load here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Physics Club Tab -->
+            <div id="studentsTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>
+                        <i class="fas fa-user-friends"></i>
+                        Physics Club Members
+                    </h2>
+                    <p>Connect with fellow physics enthusiasts</p>
+                </div>
+                
+                <div class="students-container">
+                    <div class="students-grid-container">
+                        <div class="online-students">
+                            <h3><i class="fas fa-users"></i> Online Now</h3>
+                            <div id="studentsList" class="students-grid">
+                                <!-- Online students load here -->
+                            </div>
+                        </div>
+                        
+                        <div class="club-stats">
+                            <div class="stats-card">
+                                <h3><i class="fas fa-chart-line"></i> Physics Club Stats</h3>
+                                
+                                <div class="stats-grid">
+                                    <div class="stat-card">
+                                        <div class="stat-icon">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <div class="stat-info">
+                                            <span class="stat-number" id="totalStudents">0</span>
+                                            <span class="stat-label">Total Members</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="stat-card">
+                                        <div class="stat-icon">
+                                            <i class="fas fa-comments"></i>
+                                        </div>
+                                        <div class="stat-info">
+                                            <span class="stat-number" id="totalMessages">0</span>
+                                            <span class="stat-label">Forum Posts</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="stat-card">
+                                        <div class="stat-icon">
+                                            <i class="fas fa-question-circle"></i>
+                                        </div>
+                                        <div class="stat-info">
+                                            <span class="stat-number" id="totalDoubts">0</span>
+                                            <span class="stat-label">Questions</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="stat-card">
+                                        <div class="stat-icon">
+                                            <i class="fas fa-book"></i>
+                                        </div>
+                                        <div class="stat-info">
+                                            <span class="stat-number" id="totalAssignments">0</span>
+                                            <span class="stat-label">Assignments</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="physics-activities">
+                                    <h4><i class="fas fa-trophy"></i> Top Contributors</h4>
+                                    <div id="topContributors">
+                                        <!-- Top contributors load here -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="physics-fun">
+                                <h3><i class="fas fa-lightbulb"></i> Physics Fact of the Day</h3>
+                                <div class="fun-fact" id="physicsFact">
+                                    <i class="fas fa-atom"></i>
+                                    <p>Loading interesting physics fact...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Live Notification -->
+        <div class="live-notification" id="liveNotification">
+            <div class="notification-content">
+                <i class="fas fa-bell"></i>
+                <span id="notificationText"></span>
+            </div>
+        </div>
+        
+        <!-- Formula Helper -->
+        <div class="formula-helper" id="formulaHelper">
+            <div class="formula-header">
+                <h4><i class="fas fa-square-root-alt"></i> Physics Formulas</h4>
+                <button class="close-helper"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="formula-list">
+                <button class="formula-item" data-formula="F = ma">F = ma (Newton's 2nd Law)</button>
+                <button class="formula-item" data-formula="E = mc²">E = mc² (Mass-Energy)</button>
+                <button class="formula-item" data-formula="F = G(m₁m₂)/r²">F = G(m₁m₂)/r² (Gravity)</button>
+                <button class="formula-item" data-formula="V = IR">V = IR (Ohm's Law)</button>
+                <button class="formula-item" data-formula="λ = h/p">λ = h/p (De Broglie)</button>
+                <button class="formula-item" data-formula="ΔxΔp ≥ ħ/2">ΔxΔp ≥ ħ/2 (Uncertainty)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
